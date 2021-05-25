@@ -12,28 +12,18 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :user_id %>
-    <%= form.number_field :user_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :completed %>
-    <%= form.check_box :completed %>
-  </div>
-
-  <div class="field">
     <%= form.label :task_name %>
     <%= form.text_area :task_name %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :category %>
-    <%= form.number_field :category %>
+    <%= form.select :category, Task.categories.keys, {}, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :priority %>
-    <%= form.number_field :priority %>
+    <%= form.select :priority, Task.priorities.keys, {}, class: 'form-control' %>
   </div>
 
   <div class="actions">
