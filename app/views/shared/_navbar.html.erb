@@ -1,6 +1,6 @@
 <div class="container">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">To Do Anywhere</a>
+  <a class="navbar-brand" href="#">TaskChimp</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -14,7 +14,7 @@
         <%= link_to 'My To-Do List', tasks_path, class: 'nav-link' %>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="#">Completed Tasks</a>
+        <%= link_to 'Completed Task', completed_tasks_tasks_path, class: 'nav-link' %>
       </li>
       <li class="nav-item active">
         <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'nav-link' %>

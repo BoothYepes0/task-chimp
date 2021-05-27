@@ -1,9 +1,10 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: %i[ show edit update destroy ]
+  before_action :set_task, only: %i[ show edit update destroy task_completion]
 
   # GET /tasks or /tasks.json
   def index
-    @tasks = current_user.tasks
+    # the below line loads all tasks for the current user which are not complete
+    @tasks = current_user.tasks.where(completed: false) 
   end
 
   # GET /tasks/1 or /tasks/1.json
@@ -56,10 +57,23 @@ class TasksController < ApplicationController
     end
   end
 
+  def task_completion
+    @task.update(completed: true)
+    redirect_to tasks_url, notice: "Task moved to completed list." 
+  end
+
+  def completed_tasks
+      # Here we are loading all the current user's tasks which are completed
+      @tasks = current_user.tasks.where(completed: true)     
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_task
-      @task = Task.find(params[:id])
+      @task = Task.find(params[:id])   
+    # The below two lines handle the exception whenever user tries to find a task that does not exist
+    rescue ActiveRecord::RecordNotFound
+      redirect_to tasks_path, notice: "The task you are looking for does not exist"
     end
 
     # Only allow a list of trusted parameters through.

@@ -1,5 +1,5 @@
 <div class="container">
-<h1>Tasks</h1>
+<h1>Completed Tasks</h1>
 
 <table>
   <thead>
@@ -9,7 +9,6 @@
       <th>Priority</th>
       <th>Show</th>
       <th>Edit</th>
-      <th>Completed</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -22,7 +21,6 @@
         <td><%= task.priority %></td>
         <td><%= link_to 'Show', task %></td>
         <td><%= link_to 'Edit', edit_task_path(task) %></td>
-        <td><%= link_to 'Completed', task_completion_task_path(task), method: :patch %></td>
         
       </tr>
     <% end %>
