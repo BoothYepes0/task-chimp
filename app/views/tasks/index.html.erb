@@ -1,16 +1,13 @@
 <div class="container">
 <h1>Tasks</h1>
 
-<table>
+<table class="table table-bordered">
   <thead>
     <tr>
       <th>Task name</th>
       <th>Category</th>
       <th>Priority</th>
-      <th>Show</th>
-      <th>Edit</th>
-      <th>Completed</th>
-      <th colspan="3"></th>
+      <th>Actions</th>
     </tr>
   </thead>
 
@@ -20,10 +17,18 @@
         <td><%= task.task_name %></td>
         <td><%= task.category %></td>
         <td><%= task.priority %></td>
-        <td><%= link_to 'Show', task %></td>
-        <td><%= link_to 'Edit', edit_task_path(task) %></td>
-        <td><%= link_to 'Completed', task_completion_task_path(task), method: :patch %></td>
-        
+        <td>
+        <div class="dropdown">
+          <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Actions
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <%= link_to 'Show', task, class: "dropdown-item" %>
+                <%= link_to 'Edit', edit_task_path(task), class: "dropdown-item" %>
+                <%= link_to 'Completed', task_completion_task_path(task), method: :patch, class: "dropdown-item" %>
+              </div>
+        </div>
+        </td>
       </tr>
     <% end %>
   </tbody>
