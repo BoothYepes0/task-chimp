@@ -5,6 +5,7 @@
 
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
+// here we are are important Turbolinks default rails feature. So when we add "data:{turbolinks: false}" we are just avoiding conflicts and preventing turbolinks from impacting specific pages.
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 

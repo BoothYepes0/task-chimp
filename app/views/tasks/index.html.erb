@@ -1,7 +1,8 @@
 <div class="container">
+<%= link_to 'New Task', new_task_path %>
 <h1>Tasks</h1>
 
-<table class="table table-bordered">
+<table class="table table-bordered" id="my_to_do_list">
   <thead>
     <tr>
       <th>Task name</th>
@@ -25,7 +26,7 @@
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <%= link_to 'Show', task, class: "dropdown-item" %>
                 <%= link_to 'Edit', edit_task_path(task), class: "dropdown-item" %>
-                <%= link_to 'Completed', task_completion_task_path(task), method: :patch, class: "dropdown-item", remote: true %>
+                <%= link_to 'Completed', task_completion_task_path(task, status: true), method: :patch, class: "dropdown-item", remote: true %>
               </div>
         </div>
         </td>
@@ -36,5 +37,11 @@
 
 <br>
 
-<%= link_to 'New Task', new_task_path %>
+
 </div>
+
+<script>
+  $(document).ready(function() {
+      $('#my_to_do_list').DataTable();
+  } );
+</script>
