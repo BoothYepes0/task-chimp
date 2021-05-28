@@ -59,7 +59,10 @@ class TasksController < ApplicationController
 
   def task_completion
     @task.update(completed: true)
-    redirect_to tasks_url, notice: "Task moved to completed list." 
+   # redirect_to tasks_url, notice: "Task moved to completed list." 
+   respond_to do |format|
+    format.js
+   end
   end
 
   def completed_tasks
