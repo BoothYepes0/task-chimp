@@ -1,13 +1,21 @@
 <div class="container">
 
 <h1>Tasks</h1>
-<%= search_form_for @q do |f| %>
-  <%= f.label :task_name_cont %>
-  <%= f.search_field :task_name_cont %>
-  <%= f.label :task_category_cont %>
-  <%= f.search_field :category_eq %>
-  <%= f.label :task_priority_cont %>
-  <%= f.search_field :priority_eq %>
+<%= search_form_for @q, html: {class: "mb-5"} do |f| %>
+  <div class="row">
+  <div class="col-md-4">
+    <%= f.label :task_name %>
+    <%= f.search_field :task_name_cont, class: "form-control" %>
+  </div>
+  <div class="col-md-4">
+    <%= f.label :category %>
+    <%= f.search_field :category_eq, class: "form-control" %>
+  </div>
+  <div class="col-md-4">
+    <%= f.label :priority %>
+    <%= f.search_field :priority_eq, class: "form-control" %>
+  </div>
+</div>
   <%= f.submit %>
 <% end %>
 <table class="table table-bordered" id="my_to_do_list">
@@ -15,8 +23,8 @@
     <tr>
       
       <th><%= sort_link(@q, :task_name, default_order: :desc) %></th>
-      <th>Category</th>
-      <th>Priority</th>
+      <th><%= sort_link(@q, :category, default_order: :asc) %></th>
+      <th><%= sort_link(@q, :priority, default_order: :asc) %></th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -44,9 +52,7 @@
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Task', new_task_path %>
+<%= link_to 'New Task', new_task_path, class: "btn btn-info mb-5" %>
 </div>
 
 <div class="modal fade" id="todoDisplayModal" tabindex="-1" aria-labelledby="todoDisplayModalLabel" aria-hidden="true">
