@@ -1,0 +1,17 @@
+<tr id="task_<%= task.id %>">
+  <td><%= task.task_name %></td>
+  <td><%= task.category %></td>
+  <td><%= task.priority %></td>
+  <td>
+  <div class="dropdown">
+    <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Actions
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <%= link_to 'Show', task, class: "dropdown-item", data: {toggle: 'modal', target: '#todoDisplayModal', remote: true} %>
+          <%= link_to 'Edit', edit_task_path(task), class: "dropdown-item", data: {toggle: 'modal', target: '#todoEditModal', remote: true} %>
+          <%= link_to 'Completed', task_completion_task_path(task, status: true), method: :patch, class: "dropdown-item", remote: true %>
+        </div>
+  </div>
+  </td>
+</tr>

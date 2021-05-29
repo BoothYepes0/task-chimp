@@ -1,0 +1,8 @@
+$("#task_<%= @task.id %>").replaceWith("<%= escape_javascript render('todo', task: @task)%>");
+$('#todoEditModal').modal('hide');
+
+
+// whenever we send requests html and when we send JS o Ajax requests, we need to use js.erb forms or templates
+// the $ is only used for jquery
+// the "#task_" is a pre-fix for naming the id in a form that's easier to recognize what the id pertains to 
+// in line two, the modal('hide') allows us to hide the modal after the update button is clicked

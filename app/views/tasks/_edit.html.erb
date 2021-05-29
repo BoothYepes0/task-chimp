@@ -1,0 +1,50 @@
+<!-- Modal -->
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="todoDisplayModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+<%= form_with(model: task, local: false) do |form| %>
+<div class="modal-body">
+  <% if task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+      <ul>
+        <% task.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :task_name %>
+    <%= form.text_area :task_name, class: "form-control",rows: "3" %>
+  </div>
+  <div class="form-group">
+    <%= form.label :category %>
+    <%= form.select :category, Task.categories.keys, {}, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :priority %>
+    <%= form.select :priority, Task.priorities.keys, {}, class: 'form-control' %>
+  </div>
+  </div>
+  <div class="modal-footer">
+  <div class="actions">
+    <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+    <%= form.submit class: "btn btn-success" %>
+  </div>
+  </div>
+<% end %>
+    </div>
+  </div>
+
+
+
+
