@@ -3,8 +3,10 @@ class TasksController < ApplicationController
 
   # GET /tasks or /tasks.json
   def index
+    # the below line allows us make search queries using ransack for tasks that are not complete
+    @q = current_user.tasks.where(completed: false).ransack(params[:q])
     # the below line loads all tasks for the current user which are not complete
-    @tasks = current_user.tasks.where(completed: false) 
+    @tasks = @q.result(distinct: true)
   end
 
   # GET /tasks/1 or /tasks/1.json
@@ -66,9 +68,10 @@ class TasksController < ApplicationController
    end
   end
 
-  def completed_tasks
-      # Here we are loading all the current user's tasks which are completed
-      @tasks = current_user.tasks.where(completed: true)     
+  def completed_tasks    
+      # the below line allows us make search queries using ransack for tasks that are complete
+      @q = current_user.tasks.where(completed: true).ransack(params[:q])
+      @tasks = @q.result(distinct: true)
   end
 
   private

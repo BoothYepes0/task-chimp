@@ -1,11 +1,20 @@
 <div class="container">
 
 <h1>Tasks</h1>
-
+<%= search_form_for @q do |f| %>
+  <%= f.label :task_name_cont %>
+  <%= f.search_field :task_name_cont %>
+  <%= f.label :task_category_cont %>
+  <%= f.search_field :category_eq %>
+  <%= f.label :task_priority_cont %>
+  <%= f.search_field :priority_eq %>
+  <%= f.submit %>
+<% end %>
 <table class="table table-bordered" id="my_to_do_list">
   <thead>
     <tr>
-      <th>Task name</th>
+      
+      <th><%= sort_link(@q, :task_name, default_order: :desc) %></th>
       <th>Category</th>
       <th>Priority</th>
       <th>Actions</th>
@@ -45,9 +54,3 @@
 
 <div class="modal fade" id="todoEditModal" tabindex="-1" aria-labelledby="todoEditModalLabel" aria-hidden="true">
 </div>
-
-<script>
-  $(document).ready(function() {
-      $('#my_to_do_list').DataTable();
-  } );
-</script>

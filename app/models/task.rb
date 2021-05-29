@@ -14,4 +14,12 @@ class Task < ApplicationRecord
   enum({ :category => { :work => 0, :family => 1, :school => 2, :other => 3 } })
   enum({ :priority => { :high => 0, :medium => 1, :low => 2 } })
 
+  ransacker :category, formatter: proc {|v| categories[v]} do |parent|
+  parent.table[:category]
+  end
+
+  ransacker :priority, formatter: proc {|v| priorities[v]} do |parent|
+  parent.table[:priority]
+  end
+
 end

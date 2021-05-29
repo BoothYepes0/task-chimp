@@ -5,6 +5,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.3'
 
+# Ransack gem added to allow for manipulation of data in tables on the todo and completed tasks pages
+gem 'ransack'
 # Simple form gem added to fix error with Heroku integration
 gem 'simple_form'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
@@ -83,7 +85,6 @@ group :development do
   gem 'rails-erd'
   gem 'rubocop'
   gem 'rubocop-performance'
-  gem 'rubocop-rails'
   gem 'rubocop-rails'
   gem 'web_git', github: 'firstdraft/web_git', branch: 'spring2020'
 end
