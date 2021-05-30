@@ -24,20 +24,20 @@
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
 
-    <%= f.input :password,
-                hint: "leave it blank if you don't want to change it",
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :current_password,
-                hint: "we need your current password to confirm your changes",
-                required: true,
-                input_html: { autocomplete: "current-password" } %>
+    <div class="from-group">
+      <%= f.input :password, hint: "leave it blank if you don't want to change it", input_html: {class: "form-control", autocomplete: "new-password"}, required: false %>
+    </div>
+
+    <div class="from-group">
+      <%= f.input :password_confirmation, input_html: {class: "form-control", autocomplete: "new-password"}, required: false %>
+    </div>
+
+    <div class="from-group">
+      <%= f.input :current_password, hint: "we need your current password to confirm your changes", input_html: {class: "form-control"}, required: true %>
+    </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Update" %>
+    <%= f.button :submit, "Update", class: 'btn btn-info mb-3' %>
   </div>
 <% end %>
 
@@ -47,5 +47,5 @@
 <p>Unhappy? <%#= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 -->
 
-<%= link_to "Back", :back %>
+<%= link_to "Back", :back, class: 'btn btn-secondary mb-5' %>
 </div>
