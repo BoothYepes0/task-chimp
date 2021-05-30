@@ -10,7 +10,6 @@
       <th>Show</th>
       <th>Edit</th>
       <th>Move to My To-Do List</th>
-      <th colspan="3"></th>
     </tr>
   </thead>
 
@@ -30,5 +29,5 @@
 
 <br>
 
-<%= link_to 'New Task', new_task_path %>
+<%= link_to 'New Task', new_task_path, class: 'btn btn-info', data: {turbolinks: false} %>
 </div>
