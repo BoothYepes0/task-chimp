@@ -16,12 +16,12 @@
     <%= f.search_field :priority_eq, class: "form-control" %>
   </div>
 </div>
-  <%= f.submit %>
+
+  <%= f.submit class: 'btn btn-info mt-1' %>
 <% end %>
 <table class="table table-bordered" id="my_to_do_list">
   <thead>
-    <tr>
-      
+    <tr>      
       <th><%= sort_link(@q, :task_name, default_order: :desc) %></th>
       <th><%= sort_link(@q, :category, default_order: :asc) %></th>
       <th><%= sort_link(@q, :priority, default_order: :asc) %></th>
