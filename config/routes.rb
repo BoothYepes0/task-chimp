@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     
     # member - these are the routes which require the ID of the resource (becasue a member can only return a single instance - a single task)
     member do
-      patch :task_completion
+      patch :task_status_update
     end
 
     # collection - routes which return multiple instances of resources, hence it does not require any ID

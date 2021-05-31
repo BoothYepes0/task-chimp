@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: %i[ show edit update destroy task_completion]
+  before_action :set_task, only: %i[ show edit update destroy task_status_update]
 
   # GET /tasks or /tasks.json
   def index
@@ -60,7 +60,8 @@ class TasksController < ApplicationController
     end
   end
 
-  def task_completion
+
+  def task_status_update
     @task.update(completed: params[:status])
    # redirect_to tasks_url, notice: "Task moved to completed list." 
    respond_to do |format|

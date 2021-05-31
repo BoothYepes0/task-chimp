@@ -1,15 +1,30 @@
 <div class="container">
 <h1>Completed Tasks</h1>
+<%= search_form_for @q, html: {class: "mb-5"} do |f| %>
+  <div class="row">
+  <div class="col-md-4">
+    <%= f.label :task_name %>
+    <%= f.search_field :task_name_cont, class: "form-control" %>
+  </div>
+  <div class="col-md-4">
+    <%= f.label :category %>
+    <%= f.search_field :category_eq, class: "form-control" %>
+  </div>
+  <div class="col-md-4">
+    <%= f.label :priority %>
+    <%= f.search_field :priority_eq, class: "form-control" %>
+  </div>
+</div>
+  <%= f.submit class: 'btn btn-info mt-1' %>
+<% end %>
 
-<table class="table table-bordered">
+<table class="table table-bordered" id="my_to_do_list">
   <thead>
-    <tr>
-      <th>Task name</th>
-      <th>Category</th>
-      <th>Priority</th>
-      <th>Show</th>
-      <th>Edit</th>
-      <th>Move to My To-Do List</th>
+    <tr>      
+      <th><%= sort_link(@q, :task_name, default_order: :desc) %></th>
+      <th><%= sort_link(@q, :category, default_order: :asc) %></th>
+      <th><%= sort_link(@q, :priority, default_order: :asc) %></th>
+      <th>Actions</th>
     </tr>
   </thead>
 
@@ -19,13 +34,30 @@
         <td><%= task.task_name %></td>
         <td><%= task.category %></td>
         <td><%= task.priority %></td>
-        <td><%= link_to 'Show', task %></td>
-        <td><%= link_to 'Edit', edit_task_path(task) %></td>
-        <td><%= link_to 'Move to My To-Do List', task_completion_task_path(task, status: false), method: :patch, class: "dropdown-item", remote: true %></td>
+        <td>
+        <div class="dropdown">
+          <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Actions
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <%= link_to 'Show', task, class: "dropdown-item", data: {toggle: 'modal', target: '#todoDisplayModal', remote: true} %>
+                <%= link_to 'Edit', edit_task_path(task), class: "dropdown-item", data: {toggle: 'modal', target: '#todoEditModal', remote: true} %>
+                <%= link_to 'Move to My To-Do List', task_status_update_task_path(task, status: false), method: :patch, class: "dropdown-item", remote: true %>
+              </div>
+        </div>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<%= link_to 'New Task', new_task_path, class: 'btn btn-info mb-5', data: {turbolinks: false} %>
+</div>
+
+<div class="modal fade" id="todoDisplayModal" tabindex="-1" aria-labelledby="todoDisplayModalLabel" aria-hidden="true">
+</div>
+
+<div class="modal fade" id="todoEditModal" tabindex="-1" aria-labelledby="todoEditModalLabel" aria-hidden="true">
 
 <br>
 
