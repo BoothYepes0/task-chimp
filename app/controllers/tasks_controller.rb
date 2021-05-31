@@ -28,7 +28,7 @@ class TasksController < ApplicationController
     @task.user = current_user
     respond_to do |format|
       if @task.save
-        format.html { redirect_to @task, notice: "A new task was successfully created." }
+        format.html { redirect_to tasks_path, notice: "A new task was successfully created." }
         format.json { render :show, status: :created, location: @task }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -41,7 +41,7 @@ class TasksController < ApplicationController
   def update
     respond_to do |format|
       if @task.update(task_params)
-        format.html { redirect_to @task, notice: "Task was successfully updated." }
+        format.html { redirect_to @ta, notice: "Task was successfully updated." }
         format.js
         format.json { render :show, status: :ok, location: @task }
       else
