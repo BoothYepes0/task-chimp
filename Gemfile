@@ -5,6 +5,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.3'
 
+# Mailgun API Gem
+gem 'mailgun-ruby'
 # Ransack gem added to allow for manipulation of data in tables on the todo and completed tasks pages
 gem 'ransack'
 # Simple form gem added to fix error with Heroku integration
