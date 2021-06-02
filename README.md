@@ -5,6 +5,7 @@ application up and running.
 
 ![Domain Model](erd.png?raw=true "Domain Model")
 
+
 Things you may want to cover:
 
 * Ruby version
