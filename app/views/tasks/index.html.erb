@@ -1,9 +1,8 @@
 <div class="container">
-
-
-<h3>Tasks</h3>
-
-<%= search_form_for @q, html: {class: "mb-5"} do |f| %>
+<div class="card">
+  <div class="card-body">
+<h4>Search My To-Do List</h4>
+<%= search_form_for @q, html: {class: "mb-1"} do |f| %>
   <div class="row">
   <div class="col-md-4">
     <%= f.label :task_name %>
@@ -18,12 +17,23 @@
     <%= f.select :priority_eq, options_for_select(Task.priorities.map {|key, value| [key.titleize, Task.priorities.key(value)]}), {}, {class: "form-control"} %>
   </div>
 </div>
-
-  <%= f.submit class: 'btn btn-info mt-1' %>
-  <%= link_to "Reset", tasks_path, class: "btn btn-outline-info mt-1", data: {turbolinks: false} %>
+<div class="row">
+  <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.submit class: 'btn btn-info mt-1 btn-block' %>
+        </div>
+        <div class="col-md-6">
+          <%= link_to "Reset", tasks_path, class: "btn btn-outline-info mt-1 btn-block", data: {turbolinks: false} %>
+          </div>
+        </div>
+      </div>
+    </div>
 <% end %>
+  </div>
+</div>
 
-<h1>My To-Do List</h1>
+<h1 class="mt-3">My To-Do List</h1>
 <table class="table table-bordered" id="my_to_do_list">
   <thead>
     <tr>      

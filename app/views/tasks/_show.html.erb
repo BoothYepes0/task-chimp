@@ -2,7 +2,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="todoDisplayModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="todoDisplayModalLabel"><%=@task.task_name%></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -18,12 +18,7 @@
           <strong>Completed:</strong>
           <%= @task.completed %>
         </p>
-
-        <p>
-          <strong>Task name:</strong>
-          <%= @task.task_name %>
-        </p>
-
+        
         <p>
           <strong>Category:</strong>
           <%= @task.category %>
