@@ -1,6 +1,8 @@
 <div class="container">
 
-<h1>Tasks</h1>
+
+<h3>Tasks</h3>
+
 <%= search_form_for @q, html: {class: "mb-5"} do |f| %>
   <div class="row">
   <div class="col-md-4">
@@ -20,6 +22,8 @@
   <%= f.submit class: 'btn btn-info mt-1' %>
   <%= link_to "Reset", tasks_path, class: "btn btn-outline-info mt-1", data: {turbolinks: false} %>
 <% end %>
+
+<h1>My To-Do List</h1>
 <table class="table table-bordered" id="my_to_do_list">
   <thead>
     <tr>      
@@ -53,7 +57,7 @@
   </tbody>
 </table>
 
-<%= link_to 'New Task', new_task_path, class: 'btn btn-info mb-5', data: {turbolinks: false} %>
+<%= link_to 'New Task', new_task_path, class: 'btn btn-info mb-5 btn-block', data: {turbolinks: false} %>
 </div>
 
 <div class="modal fade" id="todoDisplayModal" tabindex="-1" aria-labelledby="todoDisplayModalLabel" aria-hidden="true">
