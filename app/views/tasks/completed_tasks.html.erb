@@ -8,14 +8,15 @@
   </div>
   <div class="col-md-4">
     <%= f.label :category %>
-    <%= f.search_field :category_eq, class: "form-control" %>
+    <%= f.select :category_eq, options_for_select(Task.categories.map {|key, value| [key.titleize, Task.categories.key(value)]}), {}, {class: "form-control"} %>
   </div>
   <div class="col-md-4">
     <%= f.label :priority %>
-    <%= f.search_field :priority_eq, class: "form-control" %>
+    <%= f.select :priority_eq, options_for_select(Task.priorities.map {|key, value| [key.titleize, Task.priorities.key(value)]}), {}, {class: "form-control"} %>
   </div>
 </div>
   <%= f.submit class: 'btn btn-info mt-1' %>
+  <%= link_to "Reset", tasks_path, class: "btn btn-outline-info mt-1", data: {turbolinks: false} %>
 <% end %>
 
 <table class="table table-bordered" id="my_to_do_list">
