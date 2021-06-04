@@ -51,10 +51,10 @@ Rails.application.configure do
   config.force_ssl = true
 
   # Suggest code added to help with Rack Canonical Host gem
-  if ENV.fetch("HEROKU_APP_NAME", "").include?("staging-pr-")
-    ENV["APPLICATION_HOST"] = ENV["HEROKU_APP_NAME"] + ".herokuapp.com"
-  end
-  config.middleware.use Rack::CanonicalHost, ENV.fetch("APPLICATION_HOST")
+  #if ENV.fetch("HEROKU_APP_NAME", "").include?("staging-pr-")
+  #  ENV["APPLICATION_HOST"] = ENV["HEROKU_APP_NAME"] + ".herokuapp.com"
+  #end
+  #config.middleware.use Rack::CanonicalHost, ENV.fetch("APPLICATION_HOST")
 
   # Include generic and useful information about system operation, but avoid logging too much
   # information to avoid inadvertent exposure of personally identifiable information (PII).
