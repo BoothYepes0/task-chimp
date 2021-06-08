@@ -1,6 +1,8 @@
 <div class="container">
-<h1>Completed Tasks</h1>
-<%= search_form_for @q, html: {class: "mb-5"} do |f| %>
+<div class="card">
+  <div class="card-body">
+<h4>Search Completed Tasks</h4>
+<%= search_form_for @q, url: completed_tasks_tasks_path, html: {class: "mb-1"} do |f| %>
   <div class="row">
   <div class="col-md-4">
     <%= f.label :task_name %>
@@ -8,19 +10,33 @@
   </div>
   <div class="col-md-4">
     <%= f.label :category %>
-    <%= f.search_field :category_eq, class: "form-control" %>
+    <%= f.select :category_eq, options_for_select(Task.categories.map {|key, value| [key.titleize, Task.categories.key(value)]}), {}, {class: "form-control"} %>
   </div>
   <div class="col-md-4">
     <%= f.label :priority %>
-    <%= f.search_field :priority_eq, class: "form-control" %>
+    <%= f.select :priority_eq, options_for_select(Task.priorities.map {|key, value| [key.titleize, Task.priorities.key(value)]}), {}, {class: "form-control"} %>
   </div>
 </div>
-  <%= f.submit class: 'btn btn-info mt-1' %>
+<div class="row">
+  <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.submit class: 'btn btn-info mt-1 btn-block' %>
+        </div>
+        <div class="col-md-6">
+          <%= link_to "Reset", completed_tasks_tasks_path, class: "btn btn-outline-info mt-1 btn-block", data: {turbolinks: false} %>
+        </div>
+      </div>
+    </div>
+</div>
 <% end %>
+  </div>
+</div>
 
+<h1 class="mt-3">Completed Tasks List</h1>
 <table class="table table-bordered" id="my_to_do_list">
   <thead>
-    <tr>      
+    <tr>
       <th><%= sort_link(@q, :task_name, default_order: :desc) %></th>
       <th><%= sort_link(@q, :category, default_order: :asc) %></th>
       <th><%= sort_link(@q, :priority, default_order: :asc) %></th>
@@ -51,7 +67,7 @@
   </tbody>
 </table>
 
-<%= link_to 'New Task', new_task_path, class: 'btn btn-info mb-5', data: {turbolinks: false} %>
+<%= link_to 'New Task', new_task_path, class: 'btn btn-info mb-5 btn-block', data: {turbolinks: false} %>
 </div>
 
 <div class="modal fade" id="todoDisplayModal" tabindex="-1" aria-labelledby="todoDisplayModalLabel" aria-hidden="true">
@@ -59,7 +75,4 @@
 
 <div class="modal fade" id="todoEditModal" tabindex="-1" aria-labelledby="todoEditModalLabel" aria-hidden="true">
 
-<br>
-
-<%= link_to 'New Task', new_task_path, class: 'btn btn-info', data: {turbolinks: false} %>
 </div>

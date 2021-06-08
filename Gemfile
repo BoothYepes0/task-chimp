@@ -76,7 +76,6 @@ gem 'pry-rails'
 gem 'pundit'
 gem 'rack-canonical-host'
 gem 'rollbar'
-gem 'skylight'
 gem 'strip_attributes'
 gem 'validate_url'
 group :development do
